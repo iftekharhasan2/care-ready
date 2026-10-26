@@ -1,0 +1,77 @@
+/* Layout: app shell with a side rail; each view is a work desk, and the packet
+   is drawn as the paper sheet a doctor receives, stamped in rubber-stamp violet. */
+:root {
+  --bg: #edf2f0;
+  --surface: #fbfdfc;
+  --surface-2: #e2ebe8;
+  --ink: #10262b;
+  --ink-2: #4b6166;
+  --line: #cad7d3;
+  --accent: #0a6b5e;
+  --accent-ink: #ffffff;
+  --accent-soft: #d2e9e3;
+  --stamp: #5a3ec8;
+  --stamp-soft: #e7e1fa;
+  --good: #1c7443;
+  --good-soft: #d6eedd;
+  --warn: #93540a;
+  --warn-soft: #f6e6c8;
+  --crit: #ad2f28;
+  --crit-soft: #f8dbd7;
+  --info: #1c5f8f;
+  --info-soft: #d9e9f5;
+  --paper: #ffffff;
+  --paper-ink: #1b2a2e;
+  --paper-rule: #dfe7e4;
+  --film: #18242a;
+  --shadow: 0 1px 2px rgb(16 38 43 / 0.06), 0 10px 28px rgb(16 38 43 / 0.08);
+  --banner-from: var(--accent);
+  --banner-to: color-mix(in srgb, var(--accent) 70%, #10262b);
+  --banner-ink: #ffffff;
+
+  --font-display: 'Tiro Bangla', 'Noto Serif Bengali', Georgia, serif;
+  --font-body: 'Hind Siliguri', 'Noto Sans Bengali', 'Nirmala UI', system-ui, sans-serif;
+
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.0625rem;
+  --step-2: 1.3125rem;
+  --step-3: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow-sm: 0 1px 2px rgb(16 38 43 / 0.05), 0 2px 6px rgb(16 38 43 / 0.04);
+  --gutter: clamp(16px, 3vw, 36px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0c1719; --surface: #132326; --surface-2: #1b3034; --ink: #e4efec; --ink-2: #9db3b0; --line: #29444a;
+    --accent: #4cc5ae; --accent-ink: #062521; --accent-soft: #143b37; --stamp: #a994ff; --stamp-soft: #2a2452;
+    --good: #5fcb8b; --good-soft: #14382a; --warn: #e8b45a; --warn-soft: #3d2e12; --crit: #f08a80; --crit-soft: #44201d;
+    --info: #7cbcec; --info-soft: #14324a; --paper: #1a2c30; --paper-ink: #e8f1ee; --paper-rule: #2c464b; --film: #05090b;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 28px rgb(0 0 0 / 0.35);
+    --banner-from: var(--accent-soft); --banner-to: var(--surface-2); --banner-ink: var(--ink);
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #0c1719; --surface: #132326; --surface-2: #1b3034; --ink: #e4efec; --ink-2: #9db3b0; --line: #29444a;
+  --accent: #4cc5ae; --accent-ink: #062521; --accent-soft: #143b37; --stamp: #a994ff; --stamp-soft: #2a2452;
+  --good: #5fcb8b; --good-soft: #14382a; --warn: #e8b45a; --warn-soft: #3d2e12; --crit: #f08a80; --crit-soft: #44201d;
+  --info: #7cbcec; --info-soft: #14324a; --paper: #1a2c30; --paper-ink: #e8f1ee; --paper-rule: #2c464b; --film: #05090b;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 28px rgb(0 0 0 / 0.35);
+  --banner-from: var(--accent-soft); --banner-to: var(--surface-2); --banner-ink: var(--ink);
+  color-scheme: dark;
+}
+
+/* Each portal carries its own accent so a user always knows which desk they are at.
+   Patient keeps the base green; clinic is blue; doctor is plum. */
+[data-role='clinic'] { --accent: #2456a6; --accent-soft: #d9e5f7; }
+[data-role='doctor'] { --accent: #8c2f63; --accent-soft: #f5dce8; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light'])[data-role='clinic'], :root:not([data-theme='light']) [data-role='clinic'] { --accent: #8db6f7; --accent-ink: #0b1b36; --accent-soft: #182c4f; }
+  :root:not([data-theme='light'])[data-role='doctor'], :root:not([data-theme='light']) [data-role='doctor'] { --accent: #eb9bc4; --accent-ink: #3a0f26; --accent-soft: #40192f; }
+}
+:root[data-theme='dark'][data-role='clinic'], :root[data-theme='dark'] [data-role='clinic'] { --accent: #8db6f7; --accent-ink: #0b1b36; --accent-soft: #182c4f; }
+:root[data-theme='dark'][data-role='doctor'], :root[data-theme='dark'] [data-role='doctor'] { --accent: #eb9bc4; --accent-ink: #3a0f26; --accent-soft: #40192f; }
